@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font: 16px/1.5 sans-serif;
+        color: #222;
+        margin: 5em;
+      }
+      select { width: 40%; }
+    </style>
+  </head>
+  <body >
+    <div ng-controller="Contacts">
+      <div>
+        <input type="search" ng-model="search">
+      </div>
+
+      <select ng-model="selected_person"
+              ng-options="person.name for person in people | filter:search">
+        <option value="">Chose a person:</option>
+      </select>
+      <hr>
+      <div>
+        <label>Name:</label>
+        <input type="text" ng-model="selected_person.name">
+        <br>
+        <label>Number:</label>
+        <input type="text" ng-model="selected_person.number">
+      </div>
+    </div>
+
+    <script>
+      var Contacts = function ($scope) {
+        $scope.people = [
+          {name: 'Marcelo Both', number: '123456780'},
+          {name: 'Eliane Jungem', number: '090249392'},
+          {name: 'Bob Sapeca', number: '981399283'}
+        ];
+      };
+    </script>
+  </body>
+</html>
